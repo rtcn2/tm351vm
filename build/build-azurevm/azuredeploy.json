@@ -72,7 +72,7 @@
     "newStorageAccountName": "[concat(uniquestring(resourceGroup().id), 'iomad')]",
     "imagePublisher": "Canonical",
     "imageOffer": "UbuntuServer",
-    "ubuntuOSVersion": "18-04-LTS",
+    "ubuntuOSVersion": "18.04-LTS",
     "OSDiskName": "[concat(parameters('uniqueNamePrefix'),'Disk')]",
     "nicName": "[concat(parameters('uniqueNamePrefix'),'Nic')]",
     "addressPrefix": "10.0.0.0/16",
