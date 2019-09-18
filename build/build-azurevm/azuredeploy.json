@@ -8,12 +8,6 @@
         "description": "User name for the Virtual Machine administrator. Do not use simple names such as 'admin'."
       }
     },
-    "mySqlPassword": {
-      "type": "securestring",
-      "metadata": {
-        "description": "Password for the MySQL 'root' admin user."
-      }
-    },
     "uniqueNamePrefix": {
       "type": "string",
       "metadata": {
