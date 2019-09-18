@@ -86,7 +86,7 @@
     "virtualNetworkName": "[concat(parameters('uniqueNamePrefix'),'VNet')]",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
     "installScriptName": "build_azure_vm.sh",
-    "installScriptUri": "[concat('https://raw.githubusercontent.com/rtcn2/tm351vm/master/build-azurevm/', variables('installScriptName'))]",
+    "installScriptUri": "[concat('https://raw.githubusercontent.com/rtcn2/tm351vm/master/build/build-azurevm/', variables('installScriptName'))]",
     "installCommand": "[concat('bash ', variables('installScriptName'))]",
     "linuxConfiguration": {
       "disablePasswordAuthentication": true,
@@ -212,7 +212,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(variables('vmName'),'/newuserscript')]",
+      "name": "[concat(variables('vmName'),'/', variables('installScriptName'))]",
       "apiVersion": "2015-06-15",
       "location": "[parameters('location')]",
       "dependsOn": [
