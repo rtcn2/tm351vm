@@ -66,6 +66,13 @@
       "metadata": {
         "description": "SSH Key or password for the Virtual Machine. SSH key is recommended."
       }
+    },
+    "jupyterToken": {
+      "type": "securestring",
+      "defaultValue": "myImpossiblyHardToGuessToken",
+      "metadata": {
+        "description": "token to secure access to jupyter notebook"
+      }
     }
   },
   "variables": {
@@ -87,7 +94,7 @@
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
     "installScriptName": "build_azure_vm.sh",
     "installScriptUri": "[concat('https://raw.githubusercontent.com/rtcn2/tm351vm/master/build/build-azurevm/', variables('installScriptName'))]",
-    "installCommand": "[concat('bash ', variables('installScriptName'), ' ', parameters('adminUsername'))]",
+    "installCommand": "[concat('bash ', variables('installScriptName'), ' ', parameters('adminUsername'), ' ', parameters('jupyterToken'))]",
     "linuxConfiguration": {
       "disablePasswordAuthentication": true,
       "ssh": {

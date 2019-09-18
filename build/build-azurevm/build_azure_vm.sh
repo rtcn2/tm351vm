@@ -1,11 +1,12 @@
 #!/bin/bash
 
 user=$1
+token=$2
 
 git clone https://github.com/innovationOUtside/tm351vm --depth 1 --branch=master ~$user/tm351vm
 cd ~$user/tm351vm/build/
 
-token='myImpossiblyHardToGuessToken'
+#token='myImpossiblyHardToGuessToken'
 
 #add NotebookApp token
 # jupyter-base/services/jupyter.service
