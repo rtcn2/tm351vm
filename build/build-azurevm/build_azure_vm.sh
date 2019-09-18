@@ -1,7 +1,9 @@
 #!/bin/bash
 
-git clone https://github.com/innovationOUtside/tm351vm --depth 1 --branch=master ~/tm351vm
-cd ./tm351vm/build/
+user=$1
+
+git clone https://github.com/innovationOUtside/tm351vm --depth 1 --branch=master ~$user/tm351vm
+cd ~$user/tm351vm/build/
 
 token='myImpossiblyHardToGuessToken'
 

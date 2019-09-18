@@ -87,7 +87,7 @@
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
     "installScriptName": "build_azure_vm.sh",
     "installScriptUri": "[concat('https://raw.githubusercontent.com/rtcn2/tm351vm/master/build/build-azurevm/', variables('installScriptName'))]",
-    "installCommand": "[concat('bash ', variables('installScriptName'))]",
+    "installCommand": "[concat('bash ', variables('installScriptName'), ' ', parameters('adminUsername'))]",
     "linuxConfiguration": {
       "disablePasswordAuthentication": true,
       "ssh": {
