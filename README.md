@@ -92,6 +92,40 @@ Pack the machine:
 
 Also need to take care bringing the machine down. See running (metered) items via [console](https://eu-west-1.console.aws.amazon.com). *Remove the AMI by first deregistering it on the AWS AMI management page. Next, delete the associated snapshot on the AWS snapshot management page.*
 
+## Build Azure VM using CLI
+This is an instruction manual to provision a Azure VM for tm341. It works using any Azure-enabled CLI, to install the Azure CLI follow the instructions at https://docs.microsoft.com/bs-latn-ba/cli/azure/?view=azure-cli-latest. The CLI is available for Linux, MacOS, and Windows.
+
+### Login to Azure
+This spawns a browser window asking for you to login to your Azure account. Use your OU/Student Account and not your enterprise account.
+`az login`
+
+### Create a resource group
+`az group create --name tm341vm --location uksouth`
+
+### Create the VM
+`az vm create \
+  --resource-group tm341vm \
+  --name vmname \
+  --image UbuntuLTS \
+  --size Standard_D2S_v3 \
+  --admin-username studentadmin \
+  --admin-password USEASTRONGPASSWORDNOTTHISONE`
+  
+### Open up Ports
+This configures the azure VM firewall to allow access to Jyputer Labs/Studio. Port 22 is open by default.
+`az vm open-port --resource-group tm341vm --name vmname --port 8888`
+
+### Login
+(Use the public IP address from the feedback)
+`ssh studentadmin@IPADDRESS`
+
+### VM Configuration
+Follow the instructions at https://github.com/innovationOUtside/tm351vm/wiki/build_on_azure
+
+### Delete the VM/resource groupn
+Don’t forget when you do this, you delete _EVERYTHING_ on the VM, so save things however you want.
+`az group delete --name tm341vm`
+
 ## Associated blog posts
 
 [Course Apps in the the Cloud – Experimenting With Open Refine on Digital Ocean, Linode and AWS / Amazon EC2 Web Services](https://blog.ouseful.info/2017/03/30/course-apps-in-the-the-cloud-experimenting-with-open-refine-on-digital-ocean-linode-and-aws-amazon-ec2-web-services/)
